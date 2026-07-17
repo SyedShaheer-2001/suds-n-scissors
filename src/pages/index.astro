@@ -81,42 +81,44 @@ import ContactForm from "../components/ContactForm.astro";
             feel safe and groomers can do their best work — session after
             session.
           </p>
-          <div class="about-callout reveal reveal-delay-3" id="accepting-badge">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M5 13l4 4L19 7"></path></svg
+          <div class="about-actions reveal reveal-delay-3">
+            <div class="about-callout" id="accepting-badge">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              Now accepting new clients of all sizes
+            </div>
+            <a
+              href="#contact"
+              class="about-cta"
+              id="about-contact-link"
             >
-            Now accepting new clients of all sizes
+              Book with us today
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                width="14"
+                height="14"
+                aria-hidden="true"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
+            </a>
           </div>
-          <a
-            href="#contact"
-            class="about-cta reveal reveal-delay-4"
-            id="about-contact-link"
-          >
-            Book with us today
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-              width="14"
-              height="14"
-              aria-hidden="true"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
-            >
-          </a>
         </div>
 
         <div class="about-aside">
@@ -302,25 +304,73 @@ import ContactForm from "../components/ContactForm.astro";
             a discount — call us for a custom quote.
           </p>
 
-          <table class="price-table" aria-label="À la carte service pricing">
-            <tbody>
-              <tr><td>Ear Cleaning</td><td>$10 – $15</td></tr>
-              <tr
-                ><td>Ear Plucking <em>(add-on to cleaning)</em></td><td
-                  >$10 – $15</td
-                ></tr
-              >
-              <tr><td>Nail Cutting &amp; Dremel</td><td>$15 – $25</td></tr>
-              <tr
-                ><td>Nail Cutting &amp; Paw Pad Shave</td><td>$25 – $35</td></tr
-              >
-              <tr><td>Sanitary Area Shave</td><td>$15</td></tr>
-              <tr><td>Anal Gland Expression</td><td>$10 – $15</td></tr>
-              <tr><td>Bang Trim</td><td>$5+</td></tr>
-              <tr><td>Face Trim</td><td>$15+</td></tr>
-              <tr><td>Handstripping</td><td>$40 / 30 min</td></tr>
-            </tbody>
-          </table>
+          <div class="price-list" aria-label="À la carte service pricing">
+            <!-- Row 1 -->
+            <div class="price-row">
+              <span class="price-name">Ear Cleaning</span>
+              <span class="price-leader" aria-hidden="true"></span>
+              <span class="price-value">$10 – $15</span>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="price-row">
+              <div class="price-name-wrap">
+                <span class="price-name">Ear Plucking</span>
+                <span class="price-desc">add-on to cleaning</span>
+              </div>
+              <span class="price-leader" aria-hidden="true"></span>
+              <span class="price-value">$10 – $15</span>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="price-row">
+              <span class="price-name">Nail Cutting &amp; Dremel</span>
+              <span class="price-leader" aria-hidden="true"></span>
+              <span class="price-value">$15 – $25</span>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="price-row">
+              <span class="price-name">Nail Cutting &amp; Paw Pad Shave</span>
+              <span class="price-leader" aria-hidden="true"></span>
+              <span class="price-value">$25 – $35</span>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="price-row">
+              <span class="price-name">Sanitary Area Shave</span>
+              <span class="price-leader" aria-hidden="true"></span>
+              <span class="price-value">$15</span>
+            </div>
+
+            <!-- Row 6 -->
+            <div class="price-row">
+              <span class="price-name">Anal Gland Expression</span>
+              <span class="price-leader" aria-hidden="true"></span>
+              <span class="price-value">$10 – $15</span>
+            </div>
+
+            <!-- Row 7 -->
+            <div class="price-row">
+              <span class="price-name">Bang Trim</span>
+              <span class="price-leader" aria-hidden="true"></span>
+              <span class="price-value">$5+</span>
+            </div>
+
+            <!-- Row 8 -->
+            <div class="price-row">
+              <span class="price-name">Face Trim</span>
+              <span class="price-leader" aria-hidden="true"></span>
+              <span class="price-value">$15+</span>
+            </div>
+
+            <!-- Row 9 -->
+            <div class="price-row">
+              <span class="price-name">Handstripping</span>
+              <span class="price-leader" aria-hidden="true"></span>
+              <span class="price-value">$40 / 30 min</span>
+            </div>
+          </div>
 
           <div class="walkin-badge">
             <svg
@@ -394,16 +444,19 @@ import ContactForm from "../components/ContactForm.astro";
         <div class="carousel-track" id="carousel-track" role="list">
           <!-- Dana -->
           <article class="team-card" role="listitem" id="team-dana">
-            <img
-              class="team-card-img"
-              src="/images/hero_dog.png"
-              alt="Dana, Owner of Suds 'n' Scissors"
-              width="400"
-              height="300"
-              loading="lazy"
-            />
+            <div class="team-card-img-wrap">
+              <img
+                class="team-card-img"
+                src="/images/hero_dog.png"
+                alt="Dana, Owner of Suds 'n' Scissors"
+                width="400"
+                height="400"
+                loading="lazy"
+              />
+            </div>
             <div class="team-card-body">
-              <h3 class="team-card-name">Dana — Owner</h3>
+              <span class="team-card-role">Owner</span>
+              <h3 class="team-card-name">Dana</h3>
               <p class="team-card-bio">
                 Dana's passion for dogs led her to graduate from Animal Haven
                 Dog Grooming School in 2017, training in precision grooming and
@@ -417,15 +470,18 @@ import ContactForm from "../components/ContactForm.astro";
 
           <!-- Mana -->
           <article class="team-card" role="listitem" id="team-mana">
-            <img
-              class="team-card-img"
-              src="/images/service_bath_tidy.png"
-              alt="Mana, groomer at Suds 'n' Scissors"
-              width="400"
-              height="300"
-              loading="lazy"
-            />
+            <div class="team-card-img-wrap">
+              <img
+                class="team-card-img"
+                src="/images/service_bath_tidy.png"
+                alt="Mana, groomer at Suds 'n' Scissors"
+                width="400"
+                height="400"
+                loading="lazy"
+              />
+            </div>
             <div class="team-card-body">
+              <span class="team-card-role">Senior Stylist</span>
               <h3 class="team-card-name">Mana</h3>
               <p class="team-card-bio">
                 A graduate of Tokyo Communication Arts College, Mana trained for
@@ -438,15 +494,18 @@ import ContactForm from "../components/ContactForm.astro";
 
           <!-- Rachel -->
           <article class="team-card" role="listitem" id="team-rachel">
-            <img
-              class="team-card-img"
-              src="/images/service_bath_brush.png"
-              alt="Rachel, groomer at Suds 'n' Scissors"
-              width="400"
-              height="300"
-              loading="lazy"
-            />
+            <div class="team-card-img-wrap">
+              <img
+                class="team-card-img"
+                src="/images/service_bath_brush.png"
+                alt="Rachel, groomer at Suds 'n' Scissors"
+                width="400"
+                height="400"
+                loading="lazy"
+              />
+            </div>
             <div class="team-card-body">
+              <span class="team-card-role">Senior Stylist</span>
               <h3 class="team-card-name">Rachel</h3>
               <p class="team-card-bio">
                 With over 10 years of grooming experience, Rachel trained at
@@ -460,16 +519,19 @@ import ContactForm from "../components/ContactForm.astro";
 
           <!-- Nari -->
           <article class="team-card" role="listitem" id="team-nari">
-            <img
-              class="team-card-img"
-              src="/images/service_full_grooming.png"
-              alt="Nari Lee, Asian Style Pet Stylist at Suds 'n' Scissors"
-              width="400"
-              height="300"
-              loading="lazy"
-            />
+            <div class="team-card-img-wrap">
+              <img
+                class="team-card-img"
+                src="/images/service_full_grooming.png"
+                alt="Nari Lee, Asian Style Pet Stylist at Suds 'n' Scissors"
+                width="400"
+                height="400"
+                loading="lazy"
+              />
+            </div>
             <div class="team-card-body">
-              <h3 class="team-card-name">Nari Lee — Asian Style Stylist</h3>
+              <span class="team-card-role">Asian Style Stylist</span>
+              <h3 class="team-card-name">Nari Lee</h3>
               <p class="team-card-bio">
                 Nari completed her grooming certification in Korea and holds a
                 Fear Free® credential, ensuring every session is low-stress and
