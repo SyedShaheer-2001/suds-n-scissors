@@ -1,0 +1,78 @@
+---
+import '../styles/style.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title = "Suds 'n' Scissors | Expert Dog Grooming in Coquitlam, BC", 
+  description = "Suds 'n' Scissors offers professional dog grooming in Coquitlam, BC. Specialists in Asian Fusion styling, full grooming, bath & tidy, and walk-in services. ThreeBest Rated 2025." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/logo-suds.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://www.sudsnscissors.ca/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    
+    <script is:inline>
+      // Early theme check to avoid FOUC
+      const savedTheme = localStorage.getItem('sns-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import Lenis from 'lenis';
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      // Initialize Lenis
+      const initLenis = () => {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          smoothTouch: false,
+        });
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+        
+        return lenis;
+      };
+
+      // Initialize on load
+      let lenis: Lenis;
+      document.addEventListener('DOMContentLoaded', () => {
+        lenis = initLenis();
+      });
+    </script>
+  </body>
+</html>

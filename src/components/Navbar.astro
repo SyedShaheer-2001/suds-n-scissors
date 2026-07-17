@@ -1,0 +1,128 @@
+---
+// Navbar component
+---
+<!-- Logo Wrapper (Static/Absolute, scrolls with the page) -->
+<div class="logo-wrapper">
+  <a href="/" class="nav-logo" aria-label="Suds 'n' Scissors home">
+    <img
+      src="/logo-suds.png"
+      alt="Suds 'n' Scissors logo"
+      class="nav-logo-img"
+      width="150"
+      height="150"
+      loading="eager"
+    />
+  </a>
+</div>
+
+<!-- Floating Nav Menu (Fixed/Sticky at top right, scrolls down with the page) -->
+<header id="site-header" role="banner">
+
+  <!-- Desktop Nav Links -->
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="#about"    class="nav-link" id="nav-about">About</a>
+    <a href="#services" class="nav-link" id="nav-services">Services</a>
+    <a href="#team"     class="nav-link" id="nav-team">Team</a>
+    <a href="#contact"  class="nav-link" id="nav-contact">Contact</a>
+  </nav>
+
+  <!-- Controls inside the floating pill -->
+  <div class="nav-controls">
+    <button id="theme-toggle" aria-label="Toggle dark mode" style="display: none;">
+      <!-- Sun icon (shown in dark mode) -->
+      <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" style="display:none">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <!-- Moon icon (shown in light mode) -->
+      <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+
+    <a href="https://book.daysmart.com/api/booking/service?DSID=DC-2152467"
+       class="btn-primary"
+       id="nav-book-now"
+       target="_blank"
+       rel="noopener noreferrer">
+      Book Now
+    </a>
+
+    <!-- Hamburger -->
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</header>
+
+<!-- Mobile drawer -->
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <a href="#about"    class="nav-link" id="mob-about">About</a>
+  <a href="#services" class="nav-link" id="mob-services">Services</a>
+  <a href="#team"     class="nav-link" id="mob-team">Team</a>
+  <a href="#contact"  class="nav-link" id="mob-contact">Contact</a>
+  <a href="https://book.daysmart.com/api/booking/service?DSID=DC-2152467"
+     class="btn-primary"
+     id="mob-book-now"
+     target="_blank"
+     rel="noopener noreferrer">
+    Book Now
+  </a>
+</nav>
+
+<script>
+  // ─── Navbar scroll state ───────────────────────────────
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    if (header) {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    }
+  }, { passive: true });
+
+  // ─── Dark mode toggle ──────────────────────────────────
+  const themeToggle = document.getElementById('theme-toggle');
+  const iconSun  = document.getElementById('icon-sun');
+  const iconMoon = document.getElementById('icon-moon');
+  const html     = document.documentElement;
+
+  // Initialize display state based on loaded theme
+  if (themeToggle && iconSun && iconMoon) {
+    const initThemeIcons = () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      iconSun.style.display = isDark ? '' : 'none';
+      iconMoon.style.display = isDark ? 'none' : '';
+    };
+    
+    initThemeIcons();
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('sns-theme', next);
+      iconSun.style.display  = isDark ? 'none' : '';
+      iconMoon.style.display = isDark ? '' : 'none';
+    });
+  }
+
+  // ─── Mobile hamburger ──────────────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('nav-drawer');
+
+  if (hamburger && drawer) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close drawer on link click
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
