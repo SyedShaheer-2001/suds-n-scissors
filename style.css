@@ -148,10 +148,29 @@ ul { list-style: none; }
   flex-shrink: 0;
 }
 
-.nav-logo svg {
-  width: 32px;
-  height: 32px;
+/* Logo image */
+.nav-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
   flex-shrink: 0;
+  transition: opacity var(--transition);
+}
+.nav-logo-img:hover { opacity: 0.85; }
+
+.footer-logo-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* In dark mode, slightly dim the white-background logo */
+[data-theme="dark"] .nav-logo-img,
+[data-theme="dark"] .footer-logo-img {
+  filter: brightness(0.88) contrast(1.05);
 }
 
 /* Nav links */
