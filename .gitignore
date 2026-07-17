@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build directories
+dist/
+.astro/
+.vercel/
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.production.local
+.env.development.local
+.env.test.local
+
+# System/IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
